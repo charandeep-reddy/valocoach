@@ -56,57 +56,22 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-valorant-dark tactical-grid relative">
-      {/* Scanline overlay for entire page */}
       <div className="fixed inset-0 scanlines pointer-events-none z-50 opacity-30" />
-      
-      {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-valorant-red/20 bg-valorant-dark/90 backdrop-blur-md">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div 
-            className="flex items-center gap-3"
-          >
-            <div className="w-10 h-10 tactical-badge bg-valorant-red/20 flex items-center justify-center border border-valorant-red/40">
-              <span className="text-valorant-red font-bold text-xl">V</span>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-[#ECE8E1] uppercase tracking-[0.2em]">ValoCoach</h1>
-              <p className="text-xs text-[#8892A0] uppercase tracking-widest">Tactical Dashboard</p>
-            </div>
-          </div>
-          {/* <ThemeToggle /> */}
-        </div>
-      </header>
 
-      {/* Main Content */}
       <main className="container mx-auto px-4 py-8 space-y-8 relative z-10">
-        {/* Player Profile */}
           <PlayerProfileCard player={player} />
-
-        {/* Stats Overview */}
           <StatsOverview player={player} />
 
-        {/* Two Column Layout: Chart + Match History */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Performance Chart */}
           <section className="lg:col-span-1">
             <PerformanceChart mapStats={mapStats} />
           </section>
 
-          {/* Match History */}
           <section className="lg:col-span-2">
             <MatchHistory matches={player.matches} />
           </section>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-valorant-red/20 py-6 relative z-10">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-[#8892A0] uppercase tracking-[0.2em]">
-            ValoCoach // {player.matches.length} Matches Analyzed // Intel Ready
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

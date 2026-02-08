@@ -8,7 +8,7 @@ import { PlayerProfileCard } from "@/components/player-profile-card";
 import { StatsOverview } from "@/components/stats-overview";
 import { MatchHistory } from "@/components/match-history";
 import { PerformanceChart } from "@/components/performance-chart";
-import { ThemeToggle } from "@/components/theme-toggle";
+// import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Home() {
   const [player, setPlayer] = useState<PlayerData | null>(null);
@@ -80,7 +80,7 @@ export default function Home() {
               <p className="text-xs text-[#8892A0] uppercase tracking-widest">Tactical Dashboard</p>
             </div>
           </motion.div>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
         </div>
       </header>
 

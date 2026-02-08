@@ -52,7 +52,7 @@ export function MatchHistory({ matches }: MatchHistoryProps) {
           {filterButtons.map((btn) => (
             <motion.button
               key={btn.value}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setFilter(btn.value)}
               className={`tactical-btn px-4 py-2 text-sm font-bold uppercase tracking-wider transition-all ${
@@ -73,7 +73,7 @@ export function MatchHistory({ matches }: MatchHistoryProps) {
         placeholder="SEARCH BY AGENT OR MAP..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="max-w-md glass-card border-[#FF4655]/20 focus:border-[#FF4655]/50 text-[#ECE8E1] placeholder:text-[#8892A0] placeholder:uppercase placeholder:tracking-widest placeholder:text-xs"
+        className="max-w-md glass-card border-valorant-red/20 focus:border-valorant-red/50 text-[#ECE8E1] placeholder:text-[#8892A0] placeholder:uppercase placeholder:tracking-widest placeholder:text-xs"
       />
 
       {/* Match List */}

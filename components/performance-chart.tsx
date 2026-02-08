@@ -19,7 +19,7 @@ export function PerformanceChart({ mapStats }: PerformanceChartProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      transition={{ duration: 0.3, delay: 0.1 }}
       className="glass-card corner-accent rounded-lg p-6 relative overflow-hidden"
     >
       {/* Scanline effect */}
@@ -61,6 +61,7 @@ export function PerformanceChart({ mapStats }: PerformanceChartProps) {
                 backdropFilter: "blur(12px)",
               }}
               labelStyle={{ color: "#ECE8E1", fontWeight: "bold", textTransform: "uppercase" }}
+              itemStyle={{ color: "#ECE8E1" }}
               formatter={(value: number | undefined, _name: string | undefined, props: { payload?: MapStats }) => [
                 `${value ?? 0}% (${props.payload?.wins ?? 0}W - ${props.payload?.losses ?? 0}L)`,
                 "Win Rate",

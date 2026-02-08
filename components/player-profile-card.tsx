@@ -17,8 +17,8 @@ export function PlayerProfileCard({ player }: PlayerProfileCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="relative overflow-hidden glass-card corner-accent rounded-lg p-6"
     >
@@ -67,14 +67,14 @@ export function PlayerProfileCard({ player }: PlayerProfileCardProps) {
             >
               <p className="text-xs text-[#8892A0] uppercase tracking-widest">Current Rank</p>
               <p className="text-xl font-bold text-[#ECE8E1] tactical-heading">{rankName}</p>
-              <p className="text-lg text-valorant-red font-bold glow-red">{rankNumber} RR</p>
+              <p className="text-lg text-valorant-red font-bold">{rankNumber} RR</p>
             </motion.div>
             <motion.div 
               className="px-5 py-3 glass-card rounded-lg"
               whileHover={{ scale: 1.02 }}
             >
               <p className="text-xs text-[#8892A0] uppercase tracking-widest">Peak Rank</p>
-              <p className="text-xl font-bold text-valorant-teal glow-teal">
+              <p className="text-xl font-bold text-valorant-teal">
                 {player.peak_rank.split(" ")[0]}
               </p>
             </motion.div>
@@ -85,11 +85,11 @@ export function PlayerProfileCard({ player }: PlayerProfileCardProps) {
         <div className="hidden lg:flex flex-col gap-3 text-right">
           <div className="glass-card px-4 py-2 rounded-lg">
             <p className="text-xs text-[#8892A0] uppercase tracking-widest">Top Agent</p>
-            <p className="text-xl font-bold text-valorant-red glow-red">{player.top_agent}</p>
+            <p className="text-xl font-bold text-valorant-red">{player.top_agent}</p>
           </div>
           <div className="glass-card px-4 py-2 rounded-lg">
             <p className="text-xs text-[#8892A0] uppercase tracking-widest">Best Map</p>
-            <p className="text-xl font-bold text-valorant-teal glow-teal">{player.best_map}</p>
+            <p className="text-xl font-bold text-valorant-teal">{player.best_map}</p>
           </div>
         </div>
       </div>

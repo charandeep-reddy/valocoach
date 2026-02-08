@@ -7,20 +7,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { RESULT_BADGE_CLASSES } from "@/lib/result-styles";
 
 interface MatchDetailModalProps {
   match: Match | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
-}
-
-function SectionHeading({ title }: { title: string }) {
-  return (
-    <h3 className="text-xs font-bold text-valorant-red uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
-      <div className="w-2 h-2 bg-valorant-red" />
-      {title}
-    </h3>
-  );
 }
 
 function StatCard({
@@ -92,12 +85,6 @@ function DamageReportRow({
 
 export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModalProps) {
   if (!match) return null;
-
-  const resultStyles = {
-    Won: "result-won",
-    Lost: "result-lost",
-    Draw: "result-draw",
-  };
 
   const kdColor = match.kd_ratio >= 1 ? "text-[#00D4AA]" : "text-valorant-red";
 
@@ -181,7 +168,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
           <DialogHeader className="space-y-3">
             {/* Result Badge + Map & Agent */}
             <div className="flex items-center gap-4">
-              <div className={`tactical-badge px-5 py-2 font-bold uppercase tracking-wider text-lg ${resultStyles[match.result]}`}>
+              <div className={`tactical-badge px-5 py-2 font-bold uppercase tracking-wider text-lg ${RESULT_BADGE_CLASSES[match.result]}`}>
                 {match.result}
               </div>
               <div>
@@ -199,7 +186,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
           <div className="space-y-6 mt-6">
             {/* Combat Stats */}
             <div>
-              <SectionHeading title="Combat Stats" />
+              <SectionHeading title="Combat Stats" variant="subsection" />
               <div className="grid grid-cols-3 gap-3">
                 {combatStatsContent.map((item) => (
                   <StatCard
@@ -221,7 +208,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
 
             {/* Shot Breakdown */}
             <div>
-              <SectionHeading title="Shot Breakdown" />
+              <SectionHeading title="Shot Breakdown" variant="subsection" />
               <div className="space-y-3">
                 {shotBreakdownContent.map((item) => (
                   <ShotBreakdownRow
@@ -238,7 +225,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
 
             {/* Damage Stats */}
             <div>
-              <SectionHeading title="Damage Report" />
+              <SectionHeading title="Damage Report" variant="subsection" />
               <div className="grid grid-cols-3 gap-3">
                 {damageReportContent.map((item) => (
                   <DamageReportRow

@@ -2,18 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Match } from "@/types/player";
+import { RESULT_TEXT_CLASSES } from "@/lib/result-styles";
 
 interface MatchCardProps {
   match: Match;
   onClick?: () => void;
   index?: number;
 }
-
-const resultStyles = {
-  Won: "text-valorant-teal",
-  Lost: "text-valorant-red",
-  Draw: "text-valorant-gray",
-};
 
 function MatchStat({
   label,
@@ -72,7 +67,7 @@ export function MatchCard({ match, onClick }: MatchCardProps) {
     >
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-valorant-red to-valorant-red/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       <div className="flex items-center gap-4">
-        <div className={`tactical-badge px-4 py-1.5 font-bold uppercase tracking-wider text-sm ${resultStyles[match.result]}`}>
+        <div className={`tactical-badge px-4 py-1.5 font-bold uppercase tracking-wider text-sm ${RESULT_TEXT_CLASSES[match.result]}`}>
           {match.result}
         </div>
         <div className="flex-1 min-w-0">

@@ -1,6 +1,7 @@
 "use client";
 
 import { PlayerData } from "@/types/player";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 interface StatsOverviewProps {
   player: PlayerData;
@@ -37,10 +38,7 @@ export function StatsOverview({ player }: StatsOverviewProps) {
     <div 
       className="space-y-4"
     >
-      <h2 className="text-lg font-bold text-[#ECE8E1] flex items-center gap-3 tactical-heading">
-        <div className="w-1 h-6 bg-valorant-red" />
-        Overall Statistics
-      </h2>
+      <SectionHeading title="Overall Statistics" />
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           label="K/D Ratio"

@@ -50,6 +50,7 @@
   --color-valorant-teal: #00D4AA;
   --color-valorant-dark: #0F1923;
   --color-valorant-navy: #1A2634;
+  --color-valorant-yellow: #FFD700;
 }
 
 /* Valorant Tactical War Room Theme */
@@ -60,7 +61,7 @@
   --valorant-dark: #0F1923;
   --valorant-navy: #1A2634;
   --valorant-slate: #2A3A4D;
-  
+  --valorant-yellow: #FFD700;
   /* Light mode - still tactical but lighter */
   --background: #1A2634;
   --foreground: #ECE8E1;
@@ -181,8 +182,8 @@
 }
 
 .tactical-btn.active {
-  background: linear-gradient(135deg, #FF4655 0%, #cc3844 100%);
-  border-color: #FF4655;
+  background: linear-gradient(135deg, var(--valorant-red) 0%, #cc3844 100%);
+  border-color: var(--valorant-red);
 }
 
 /* Tactical Badge with skewed corners */
@@ -240,13 +241,13 @@
   pointer-events: none;
   user-select: none;
   white-space: nowrap;
-  color: #FF4655;
+  color: var(--valorant-red);
 }
 
 /* Stat Number Glow */
 .stat-value {
   font-variant-numeric: tabular-nums;
-  color: #FF4655;
+  color: var(--valorant-red);
 }
 
 /* Scrollbar Styling */
@@ -281,19 +282,19 @@
 
 /* Result Colors */
 .result-won {
-  color: #00D4AA;
+  color: var(--valorant-teal);
   background: rgba(0, 212, 170, 0.15);
   border-color: rgba(0, 212, 170, 0.4);
 }
 
 .result-lost {
-  color: #FF4655;
+  color: var(--valorant-red);
   background: rgba(255, 70, 85, 0.15);
   border-color: rgba(255, 70, 85, 0.4);
 }
 
 .result-draw {
-  color: #FFD700;
+  color: var(--valorant-yellow);
   background: rgba(255, 215, 0, 0.15);
   border-color: rgba(255, 215, 0, 0.4);
 }

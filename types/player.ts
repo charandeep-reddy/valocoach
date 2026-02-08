@@ -40,4 +40,4 @@ export interface PlayerData {
   matches: Match[];
 }
 
-export type FilterType = "all" | "won" | "lost";
+export type FilterType = "all" | "won" | "lost" | "draw";

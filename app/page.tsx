@@ -7,7 +7,7 @@ import { PlayerProfileCard } from "@/components/player-profile-card";
 import { StatsOverview } from "@/components/stats-overview";
 import { MatchHistory } from "@/components/match-history";
 import { PerformanceChart } from "@/components/performance-chart";
-// import { ThemeToggle } from "@/components/theme-toggle";
+import { getPlayerData } from "@/lib/data";
 
 export default function Home() {
   const [player, setPlayer] = useState<PlayerData | null>(null);
@@ -17,9 +17,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("/data/player.json");
-        if (!response.ok) throw new Error("Failed to fetch player data");
-        const data = await response.json();
+        const data = await getPlayerData();
         setPlayer(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "An error occurred");
@@ -82,21 +80,15 @@ export default function Home() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8 space-y-8 relative z-10">
         {/* Player Profile */}
-        <section>
           <PlayerProfileCard player={player} />
-        </section>
 
         {/* Stats Overview */}
-        <section>
           <StatsOverview player={player} />
-        </section>
 
         {/* Two Column Layout: Chart + Match History */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Performance Chart */}
-          <section className="lg:col-span-1">
             <PerformanceChart mapStats={mapStats} />
-          </section>
 
           {/* Match History */}
           <section className="lg:col-span-2">

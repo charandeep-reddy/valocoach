@@ -12,6 +12,7 @@ export function filterMatches(matches: Match[], filter: FilterType): Match[] {
   if (filter === "all") return matches;
   if (filter === "won") return matches.filter((m) => m.result === "Won");
   if (filter === "lost") return matches.filter((m) => m.result === "Lost");
+  if (filter === "draw") return matches.filter((m) => m.result === "Draw");
   return matches;
 }
 

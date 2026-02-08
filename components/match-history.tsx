@@ -45,7 +45,7 @@ export function MatchHistory({ matches }: MatchHistoryProps) {
           </span>
         </SectionHeading>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap justify-center">
           {filterButtons.map((btn) => (
             <motion.button
               key={btn.value}

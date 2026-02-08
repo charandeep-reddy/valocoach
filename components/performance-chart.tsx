@@ -29,7 +29,7 @@ const getBarColor = (winRate: number) => {
 
 export function PerformanceChart({ mapStats }: PerformanceChartProps) {
   return (
-    <div className="glass-card corner-accent rounded-lg p-6 relative overflow-hidden">
+    <div className="glass-card corner-accent rounded-lg p-6 relative overflow-hidden flex flex-col gap-4">
       {/* Scanline effect */}
       <div className="absolute inset-0 scanlines pointer-events-none opacity-50" />
 
@@ -38,10 +38,10 @@ export function PerformanceChart({ mapStats }: PerformanceChartProps) {
       <ChartContainer config={chartConfig} className="h-[300px] w-full relative z-10">
         <BarChart
           data={mapStats}
-          layout="vertical"
-          margin={{ top: 5, right: 30, left: 60, bottom: 5 }}
+          layout="horizontal"
+          margin={{ top: 0, right:30, left: 0, bottom: 0 }}
         >
-          <XAxis
+          <YAxis
             type="number"
             domain={[0, 100]}
             tickFormatter={(value) => `${value}%`}
@@ -49,7 +49,7 @@ export function PerformanceChart({ mapStats }: PerformanceChartProps) {
             axisLine={{ stroke: "#2A3A4D" }}
             tickLine={{ stroke: "#2A3A4D" }}
           />
-          <YAxis
+          <XAxis
             type="category"
             dataKey="map"
             tick={{ fill: "#ECE8E1", fontSize: 12, fontWeight: "bold" }}
@@ -87,7 +87,7 @@ export function PerformanceChart({ mapStats }: PerformanceChartProps) {
             ))}
           </Bar>
         </BarChart>
-      </ChartContainer>
+        </ChartContainer>
     </div>
   );
 }

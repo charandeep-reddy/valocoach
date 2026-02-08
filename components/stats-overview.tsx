@@ -31,7 +31,7 @@ function StatCard({ label, value, subtext, isPositive, isNeutral, delay = 0 }: S
       whileHover={{ scale: 1.03, y: -2 }}
       className="glass-card hover-glow rounded-lg p-5 relative overflow-hidden group"
     >
-      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#FF4655] to-transparent" />
+      <div className="absolute top-0 left-0 w-1 h-full bg-linear-to-b from-valorant-red to-transparent" />
       <p className="text-xs uppercase tracking-[0.2em] text-[#8892A0] mb-2 tactical-heading">
         {label}
       </p>
@@ -54,7 +54,7 @@ export function StatsOverview({ player }: StatsOverviewProps) {
       transition={{ duration: 0.3 }}
     >
       <h2 className="text-lg font-bold text-[#ECE8E1] flex items-center gap-3 tactical-heading">
-        <div className="w-1 h-6 bg-[#FF4655]" />
+        <div className="w-1 h-6 bg-valorant-red" />
         Overall Statistics
       </h2>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

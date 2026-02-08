@@ -41,7 +41,7 @@ export function MatchHistory({ matches }: MatchHistoryProps) {
       {/* Header & Filters */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h2 className="text-lg font-bold text-[#ECE8E1] flex items-center gap-3 tactical-heading">
-          <div className="w-1 h-6 bg-[#FF4655]" />
+          <div className="w-1 h-6 bg-valorant-red" />
           Match History
           <span className="text-sm font-normal text-[#8892A0] normal-case tracking-normal">
             ({filteredMatches.length} matches)

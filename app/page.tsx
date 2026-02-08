@@ -33,13 +33,13 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0F1923] tactical-grid">
+      <div className="min-h-screen flex items-center justify-center bg-valorant-dark tactical-grid">
         <motion.div 
           className="flex flex-col items-center gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          <div className="w-12 h-12 border-2 border-[#FF4655] border-t-transparent rounded-full animate-spin" />
+          <div className="w-12 h-12 border-2 border-valorant-red border-t-transparent rounded-full animate-spin" />
           <p className="text-[#8892A0] uppercase tracking-[0.3em] text-sm">Loading Intel...</p>
         </motion.div>
       </div>
@@ -48,9 +48,9 @@ export default function Home() {
 
   if (error || !player) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0F1923] tactical-grid">
+      <div className="min-h-screen flex items-center justify-center bg-valorant-dark tactical-grid">
         <div className="text-center glass-card p-8 rounded-lg">
-          <p className="text-[#FF4655] text-lg font-bold uppercase tracking-widest">Error</p>
+          <p className="text-valorant-red text-lg font-bold uppercase tracking-widest">Error</p>
           <p className="text-[#8892A0] mt-2">{error || "Failed to load player data"}</p>
         </div>
       </div>
@@ -60,20 +60,20 @@ export default function Home() {
   const mapStats = getMapStats(player.matches);
 
   return (
-    <div className="min-h-screen bg-[#0F1923] tactical-grid relative">
+    <div className="min-h-screen bg-valorant-dark tactical-grid relative">
       {/* Scanline overlay for entire page */}
       <div className="fixed inset-0 scanlines pointer-events-none z-50 opacity-30" />
       
       {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-[#FF4655]/20 bg-[#0F1923]/90 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-valorant-red/20 bg-valorant-dark/90 backdrop-blur-md">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <motion.div 
             className="flex items-center gap-3"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            <div className="w-10 h-10 tactical-badge bg-[#FF4655]/20 flex items-center justify-center border border-[#FF4655]/40">
-              <span className="text-[#FF4655] font-bold text-xl glow-red">V</span>
+            <div className="w-10 h-10 tactical-badge bg-valorant-red/20 flex items-center justify-center border border-valorant-red/40">
+              <span className="text-valorant-red font-bold text-xl glow-red">V</span>
             </div>
             <div>
               <h1 className="text-xl font-bold text-[#ECE8E1] uppercase tracking-[0.2em]">ValoCoach</h1>
@@ -111,7 +111,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#FF4655]/20 py-6 relative z-10">
+      <footer className="border-t border-valorant-red/20 py-6 relative z-10">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm text-[#8892A0] uppercase tracking-[0.2em]">
             ValoCoach // {player.matches.length} Matches Analyzed // Intel Ready

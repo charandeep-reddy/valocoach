@@ -24,7 +24,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
     Draw: "result-draw",
   };
 
-  const kdColor = match.kd_ratio >= 1 ? "text-[#00D4AA] glow-teal" : "text-[#FF4655] glow-red";
+  const kdColor = match.kd_ratio >= 1 ? "text-[#00D4AA] glow-teal" : "text-valorant-red glow-red";
 
   // Parse date
   const dateStr = match.date_and_time.replace(" UTC", "");
@@ -48,11 +48,11 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
 
   // Damage difference
   const damageDiff = match.damage_made - match.damage_received;
-  const damageColor = damageDiff >= 0 ? "text-[#00D4AA] glow-teal" : "text-[#FF4655] glow-red";
+  const damageColor = damageDiff >= 0 ? "text-[#00D4AA] glow-teal" : "text-valorant-red glow-red";
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-lg bg-[#0F1923] border border-[#FF4655]/30 backdrop-blur-xl">
+      <DialogContent className="max-w-lg bg-valorant-dark border border-valorant-red/30 backdrop-blur-xl">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -79,8 +79,8 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
           <div className="space-y-6 mt-6">
             {/* Combat Stats */}
             <div>
-              <h3 className="text-xs font-bold text-[#FF4655] uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
-                <div className="w-2 h-2 bg-[#FF4655]" />
+              <h3 className="text-xs font-bold text-valorant-red uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                <div className="w-2 h-2 bg-valorant-red" />
                 Combat Stats
               </h3>
               <div className="grid grid-cols-3 gap-3">
@@ -120,35 +120,35 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
 
             {/* Shot Breakdown */}
             <div>
-              <h3 className="text-xs font-bold text-[#FF4655] uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
-                <div className="w-2 h-2 bg-[#FF4655]" />
+              <h3 className="text-xs font-bold text-valorant-red uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                <div className="w-2 h-2 bg-valorant-red" />
                 Shot Breakdown
               </h3>
               <div className="space-y-3">
                 {/* Headshots */}
                 <div className="flex items-center justify-between gap-4">
                   <span className="text-sm text-[#ECE8E1] uppercase tracking-wide w-24">Head</span>
-                  <div className="flex-1 h-3 bg-[#1A2634] rounded-full overflow-hidden">
+                  <div className="flex-1 h-3 bg-valorant-navy rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${headshotPct}%` }}
                       transition={{ duration: 0.5, delay: 0.1 }}
-                      className="h-full bg-gradient-to-r from-[#00D4AA] to-[#00D4AA]/70 rounded-full"
+                      className="h-full bg-linear-to-r from-valorant-teal to-valorant-teal/70 rounded-full"
                     />
                   </div>
-                  <span className="text-sm font-bold text-[#00D4AA] w-24 text-right tabular-nums">
+                  <span className="text-sm font-bold text-valorant-teal w-24 text-right tabular-nums">
                     {match.headshots} ({headshotPct}%)
                   </span>
                 </div>
                 {/* Bodyshots */}
                 <div className="flex items-center justify-between gap-4">
                   <span className="text-sm text-[#ECE8E1] uppercase tracking-wide w-24">Body</span>
-                  <div className="flex-1 h-3 bg-[#1A2634] rounded-full overflow-hidden">
+                  <div className="flex-1 h-3 bg-valorant-navy rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${bodyshotPct}%` }}
                       transition={{ duration: 0.5, delay: 0.2 }}
-                      className="h-full bg-gradient-to-r from-[#8892A0] to-[#8892A0]/70 rounded-full"
+                      className="h-full bg-linear-to-r from-[#8892A0] to-[#8892A0]/70 rounded-full"
                     />
                   </div>
                   <span className="text-sm font-bold text-[#8892A0] w-24 text-right tabular-nums">
@@ -158,15 +158,15 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
                 {/* Legshots */}
                 <div className="flex items-center justify-between gap-4">
                   <span className="text-sm text-[#ECE8E1] uppercase tracking-wide w-24">Legs</span>
-                  <div className="flex-1 h-3 bg-[#1A2634] rounded-full overflow-hidden">
+                  <div className="flex-1 h-3 bg-valorant-navy rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${legshotPct}%` }}
                       transition={{ duration: 0.5, delay: 0.3 }}
-                      className="h-full bg-gradient-to-r from-[#FF4655] to-[#FF4655]/70 rounded-full"
+                      className="h-full bg-linear-to-r from-valorant-red to-valorant-red/70 rounded-full"
                     />
                   </div>
-                  <span className="text-sm font-bold text-[#FF4655] w-24 text-right tabular-nums">
+                  <span className="text-sm font-bold text-valorant-red w-24 text-right tabular-nums">
                     {match.legshots} ({legshotPct}%)
                   </span>
                 </div>
@@ -175,8 +175,8 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
 
             {/* Damage Stats */}
             <div>
-              <h3 className="text-xs font-bold text-[#FF4655] uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
-                <div className="w-2 h-2 bg-[#FF4655]" />
+              <h3 className="text-xs font-bold text-valorant-red uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                <div className="w-2 h-2 bg-valorant-red" />
                 Damage Report
               </h3>
               <div className="grid grid-cols-3 gap-3">
@@ -184,7 +184,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
                   className="glass-card p-4 text-center rounded-lg"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <p className="text-2xl font-bold text-[#00D4AA] glow-teal tabular-nums">
+                  <p className="text-2xl font-bold text-valorant-teal glow-teal tabular-nums">
                     {match.damage_made.toLocaleString()}
                   </p>
                   <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">Dealt</p>
@@ -193,7 +193,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
                   className="glass-card p-4 text-center rounded-lg"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <p className="text-2xl font-bold text-[#FF4655] glow-red tabular-nums">
+                  <p className="text-2xl font-bold text-valorant-red glow-red tabular-nums">
                     {match.damage_received.toLocaleString()}
                   </p>
                   <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">Received</p>

@@ -14,7 +14,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-10 h-10 tactical-badge bg-[#FF4655]/10 border border-[#FF4655]/30" />
+      <div className="w-10 h-10 tactical-badge bg-valorant-red/10 border border-valorant-red/30" />
     );
   }
 
@@ -23,7 +23,7 @@ export function ThemeToggle() {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="w-10 h-10 tactical-badge bg-[#FF4655]/10 border border-[#FF4655]/30 flex items-center justify-center hover:bg-[#FF4655]/20 hover:border-[#FF4655]/50 transition-all"
+      className="w-10 h-10 tactical-badge bg-valorant-red/10 border border-valorant-red/30 flex items-center justify-center hover:bg-valorant-red/20 hover:border-valorant-red/50 transition-all"
     >
       {theme === "dark" ? (
         <svg

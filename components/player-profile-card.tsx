@@ -35,11 +35,11 @@ export function PlayerProfileCard({ player }: PlayerProfileCardProps) {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <div className="absolute -inset-1 bg-gradient-to-r from-[#FF4655]/40 to-[#00D4AA]/40 rounded-lg blur opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute -inset-1 bg-linear-to-r from-valorant-red/40 to-valorant-teal/40 rounded-lg blur opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
           <img
             src={player.player_card_link}
             alt={player.player_name}
-            className="relative w-28 h-28 rounded-lg object-cover ring-2 ring-[#FF4655]/50"
+            className="relative w-28 h-28 rounded-lg object-cover ring-2 ring-valorant-red/50"
           />
         </motion.div>
 
@@ -50,10 +50,10 @@ export function PlayerProfileCard({ player }: PlayerProfileCardProps) {
               {player.player_name}
             </h1>
             <div className="flex items-center gap-3 mt-2">
-              <Badge className="tactical-badge bg-[#FF4655]/20 text-[#FF4655] border border-[#FF4655]/40 font-mono uppercase tracking-wide">
+              <Badge className="tactical-badge bg-valorant-red/20 text-valorant-red border border-valorant-red/40 font-mono uppercase tracking-wide">
                 Level {player.player_account_level}
               </Badge>
-              <Badge className="tactical-badge bg-[#00D4AA]/20 text-[#00D4AA] border border-[#00D4AA]/40 text-xs uppercase">
+              <Badge className="tactical-badge bg-valorant-teal/20 text-valorant-tealteal border border-valorant-teal/40 text-xs uppercase">
                 #{player.leaderboard_placement} Leaderboard
               </Badge>
             </div>
@@ -67,14 +67,14 @@ export function PlayerProfileCard({ player }: PlayerProfileCardProps) {
             >
               <p className="text-xs text-[#8892A0] uppercase tracking-widest">Current Rank</p>
               <p className="text-xl font-bold text-[#ECE8E1] tactical-heading">{rankName}</p>
-              <p className="text-lg text-[#FF4655] font-bold glow-red">{rankNumber} RR</p>
+              <p className="text-lg text-valorant-red font-bold glow-red">{rankNumber} RR</p>
             </motion.div>
             <motion.div 
               className="px-5 py-3 glass-card rounded-lg"
               whileHover={{ scale: 1.02 }}
             >
               <p className="text-xs text-[#8892A0] uppercase tracking-widest">Peak Rank</p>
-              <p className="text-xl font-bold text-[#00D4AA] glow-teal">
+              <p className="text-xl font-bold text-valorant-teal glow-teal">
                 {player.peak_rank.split(" ")[0]}
               </p>
             </motion.div>
@@ -85,11 +85,11 @@ export function PlayerProfileCard({ player }: PlayerProfileCardProps) {
         <div className="hidden lg:flex flex-col gap-3 text-right">
           <div className="glass-card px-4 py-2 rounded-lg">
             <p className="text-xs text-[#8892A0] uppercase tracking-widest">Top Agent</p>
-            <p className="text-xl font-bold text-[#FF4655] glow-red">{player.top_agent}</p>
+            <p className="text-xl font-bold text-valorant-red glow-red">{player.top_agent}</p>
           </div>
           <div className="glass-card px-4 py-2 rounded-lg">
             <p className="text-xs text-[#8892A0] uppercase tracking-widest">Best Map</p>
-            <p className="text-xl font-bold text-[#00D4AA] glow-teal">{player.best_map}</p>
+            <p className="text-xl font-bold text-valorant-teal glow-teal">{player.best_map}</p>
           </div>
         </div>
       </div>

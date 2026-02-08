@@ -26,7 +26,7 @@ export function PerformanceChart({ mapStats }: PerformanceChartProps) {
       <div className="absolute inset-0 scanlines pointer-events-none opacity-50" />
       
       <h3 className="text-lg font-bold text-[#ECE8E1] flex items-center gap-3 tactical-heading mb-4 relative z-10">
-        <div className="w-1 h-6 bg-[#FF4655]" />
+        <div className="w-1 h-6 bg-valorant-red" />
         Performance by Map
       </h3>
       
@@ -61,8 +61,8 @@ export function PerformanceChart({ mapStats }: PerformanceChartProps) {
                 backdropFilter: "blur(12px)",
               }}
               labelStyle={{ color: "#ECE8E1", fontWeight: "bold", textTransform: "uppercase" }}
-              formatter={(value: number, name: string, props: { payload: MapStats }) => [
-                `${value}% (${props.payload.wins}W - ${props.payload.losses}L)`,
+              formatter={(value: number | undefined, _name: string | undefined, props: { payload?: MapStats }) => [
+                `${value ?? 0}% (${props.payload?.wins ?? 0}W - ${props.payload?.losses ?? 0}L)`,
                 "Win Rate",
               ]}
               cursor={{ fill: "rgba(255, 70, 85, 0.1)" }}

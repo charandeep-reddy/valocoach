@@ -20,8 +20,8 @@ function StatCard({ label, value, subtext, isPositive, isNeutral, delay = 0 }: S
   const valueClass = isNeutral 
     ? "stat-value neutral" 
     : isPositive 
-      ? "stat-value positive glow-teal" 
-      : "stat-value negative glow-red";
+      ? "stat-value positive" 
+      : "stat-value negative";
 
   return (
     <motion.div

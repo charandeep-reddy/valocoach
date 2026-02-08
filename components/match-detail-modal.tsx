@@ -24,7 +24,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
     Draw: "result-draw",
   };
 
-  const kdColor = match.kd_ratio >= 1 ? "text-[#00D4AA] glow-teal" : "text-valorant-red glow-red";
+  const kdColor = match.kd_ratio >= 1 ? "text-[#00D4AA]" : "text-valorant-red";
 
   // Parse date
   const dateStr = match.date_and_time.replace(" UTC", "");
@@ -48,7 +48,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
 
   // Damage difference
   const damageDiff = match.damage_made - match.damage_received;
-  const damageColor = damageDiff >= 0 ? "text-[#00D4AA] glow-teal" : "text-valorant-red glow-red";
+  const damageColor = damageDiff >= 0 ? "text-[#00D4AA]" : "text-valorant-red";
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -184,7 +184,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
                   className="glass-card p-4 text-center rounded-lg"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <p className="text-2xl font-bold text-valorant-teal glow-teal tabular-nums">
+                  <p className="text-2xl font-bold text-valorant-teal tabular-nums">
                     {match.damage_made.toLocaleString()}
                   </p>
                   <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">Dealt</p>
@@ -193,7 +193,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
                   className="glass-card p-4 text-center rounded-lg"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <p className="text-2xl font-bold text-valorant-red glow-red tabular-nums">
+                  <p className="text-2xl font-bold text-valorant-red tabular-nums">
                     {match.damage_received.toLocaleString()}
                   </p>
                   <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">Received</p>

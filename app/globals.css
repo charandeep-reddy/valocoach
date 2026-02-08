@@ -170,16 +170,6 @@
   box-shadow: 0 0 20px rgba(255, 70, 85, 0.15);
 }
 
-/* Valorant Red Glow Text */
-.glow-red {
-  text-shadow: 0 0 10px rgba(255, 70, 85, 0.5), 0 0 20px rgba(255, 70, 85, 0.3);
-}
-
-/* Teal Glow for positive stats */
-.glow-teal {
-  text-shadow: 0 0 10px rgba(0, 212, 170, 0.5), 0 0 20px rgba(0, 212, 170, 0.3);
-}
-
 /* Tactical Button with diagonal cut */
 .tactical-btn {
   position: relative;

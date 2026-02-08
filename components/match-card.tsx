@@ -16,7 +16,7 @@ export function MatchCard({ match, onClick, index = 0 }: MatchCardProps) {
     Draw: "result-draw",
   };
 
-  const kdColor = match.kd_ratio >= 1 ? "text-[#00D4AA] glow-teal" : "text-valorant-red glow-red";
+  const kdColor = match.kd_ratio >= 1 ? "text-[#00D4AA]" : "text-valorant-red";
 
   // Parse date
   const dateStr = match.date_and_time.replace(" UTC", "");

@@ -73,7 +73,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
           >
             <div className="w-10 h-10 tactical-badge bg-valorant-red/20 flex items-center justify-center border border-valorant-red/40">
-              <span className="text-valorant-red font-bold text-xl glow-red">V</span>
+              <span className="text-valorant-red font-bold text-xl">V</span>
             </div>
             <div>
               <h1 className="text-xl font-bold text-[#ECE8E1] uppercase tracking-[0.2em]">ValoCoach</h1>

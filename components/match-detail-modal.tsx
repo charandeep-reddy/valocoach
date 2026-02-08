@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Match } from "@/types/player";
 import {
   Dialog,
@@ -88,7 +88,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
                   className="glass-card p-4 text-center rounded-lg"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <p className="text-3xl font-bold text-[#ECE8E1] glow-red">{match.ACS}</p>
+                  <p className="text-3xl font-bold text-[#ECE8E1]">{match.ACS}</p>
                   <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">ACS</p>
                 </motion.div>
                 <motion.div 
@@ -114,7 +114,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
                 <p className="text-2xl font-bold text-[#ECE8E1] tabular-nums">
                   {match.kills} / {match.deaths} / {match.assists}
                 </p>
-                <p className="text-xs text-[#8892A0] uppercase tracking-widest">K / D / A</p>
+                <p className="text-xs text-[#8892A0] uppercase tracking-widest">Kills / Deaths / Assists</p>
               </div>
             </div>
 

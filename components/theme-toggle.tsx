@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -14,18 +14,16 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="icon" className="w-9 h-9">
-        <span className="sr-only">Toggle theme</span>
-      </Button>
+      <div className="w-10 h-10 tactical-badge bg-[#FF4655]/10 border border-[#FF4655]/30" />
     );
   }
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="w-9 h-9"
+      className="w-10 h-10 tactical-badge bg-[#FF4655]/10 border border-[#FF4655]/30 flex items-center justify-center hover:bg-[#FF4655]/20 hover:border-[#FF4655]/50 transition-all"
     >
       {theme === "dark" ? (
         <svg
@@ -34,7 +32,7 @@ export function ThemeToggle() {
           height="18"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="currentColor"
+          stroke="#FF4655"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -56,7 +54,7 @@ export function ThemeToggle() {
           height="18"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="currentColor"
+          stroke="#FF4655"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -65,6 +63,6 @@ export function ThemeToggle() {
         </svg>
       )}
       <span className="sr-only">Toggle theme</span>
-    </Button>
+    </motion.button>
   );
 }

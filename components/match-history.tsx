@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Match, FilterType } from "@/types/player";
 import { filterMatches, searchMatches } from "@/lib/data";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MatchCard } from "@/components/match-card";
 import { MatchDetailModal } from "@/components/match-detail-modal";
@@ -32,56 +32,74 @@ export function MatchHistory({ matches }: MatchHistoryProps) {
   };
 
   return (
-    <div className="space-y-4">
+    <motion.div 
+      className="space-y-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
       {/* Header & Filters */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
-          <div className="w-1 h-5 bg-primary rounded-full" />
+        <h2 className="text-lg font-bold text-[#ECE8E1] flex items-center gap-3 tactical-heading">
+          <div className="w-1 h-6 bg-[#FF4655]" />
           Match History
-          <span className="text-sm font-normal text-muted-foreground">
+          <span className="text-sm font-normal text-[#8892A0] normal-case tracking-normal">
             ({filteredMatches.length} matches)
           </span>
         </h2>
 
         <div className="flex items-center gap-2">
           {filterButtons.map((btn) => (
-            <Button
+            <motion.button
               key={btn.value}
-              variant={filter === btn.value ? "default" : "outline"}
-              size="sm"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setFilter(btn.value)}
-              className="transition-all duration-200"
+              className={`tactical-btn px-4 py-2 text-sm font-bold uppercase tracking-wider transition-all ${
+                filter === btn.value 
+                  ? "active text-white" 
+                  : "text-[#8892A0] hover:text-[#ECE8E1]"
+              }`}
             >
               {btn.label}
               <span className="ml-1.5 text-xs opacity-70">({btn.count})</span>
-            </Button>
+            </motion.button>
           ))}
         </div>
       </div>
 
       {/* Search */}
       <Input
-        placeholder="Search by agent or map..."
+        placeholder="SEARCH BY AGENT OR MAP..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="max-w-md bg-card/50"
+        className="max-w-md glass-card border-[#FF4655]/20 focus:border-[#FF4655]/50 text-[#ECE8E1] placeholder:text-[#8892A0] placeholder:uppercase placeholder:tracking-widest placeholder:text-xs"
       />
 
       {/* Match List */}
-      <div className="space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin">
-        {filteredMatches.length === 0 ? (
-          <div className="text-center py-12 text-muted-foreground">
-            No matches found
-          </div>
-        ) : (
-          filteredMatches.map((match) => (
-            <MatchCard 
-              key={match.match_id} 
-              match={match} 
-              onClick={() => handleMatchClick(match)}
-            />
-          ))
-        )}
+      <div className="space-y-2 max-h-[600px] overflow-y-auto pr-2 tactical-scrollbar">
+        <AnimatePresence mode="popLayout">
+          {filteredMatches.length === 0 ? (
+            <motion.div 
+              key="empty"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="text-center py-12 text-[#8892A0] uppercase tracking-widest"
+            >
+              No matches found
+            </motion.div>
+          ) : (
+            filteredMatches.map((match, index) => (
+              <MatchCard 
+                key={match.match_id} 
+                match={match}
+                index={index}
+                onClick={() => handleMatchClick(match)}
+              />
+            ))
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Match Detail Modal */}
@@ -90,6 +108,6 @@ export function MatchHistory({ matches }: MatchHistoryProps) {
         open={modalOpen}
         onOpenChange={setModalOpen}
       />
-    </div>
+    </motion.div>
   );
 }

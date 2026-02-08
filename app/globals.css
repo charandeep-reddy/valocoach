@@ -45,75 +45,72 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  /* Valorant Colors */
+  --color-valorant-red: #FF4655;
+  --color-valorant-teal: #00D4AA;
+  --color-valorant-dark: #0F1923;
+  --color-valorant-navy: #1A2634;
 }
 
+/* Valorant Tactical War Room Theme */
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --radius: 0.5rem;
+  --valorant-red: #FF4655;
+  --valorant-teal: #00D4AA;
+  --valorant-dark: #0F1923;
+  --valorant-navy: #1A2634;
+  --valorant-slate: #2A3A4D;
+  
+  /* Light mode - still tactical but lighter */
+  --background: #1A2634;
+  --foreground: #ECE8E1;
+  --card: rgba(26, 38, 52, 0.6);
+  --card-foreground: #ECE8E1;
+  --popover: #1A2634;
+  --popover-foreground: #ECE8E1;
+  --primary: #FF4655;
+  --primary-foreground: #FFFFFF;
+  --secondary: #2A3A4D;
+  --secondary-foreground: #ECE8E1;
+  --muted: #2A3A4D;
+  --muted-foreground: #8892A0;
+  --accent: #00D4AA;
+  --accent-foreground: #0F1923;
+  --destructive: #FF4655;
+  --border: rgba(255, 70, 85, 0.2);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #FF4655;
+  --chart-1: #FF4655;
+  --chart-2: #00D4AA;
+  --chart-3: #8892A0;
+  --chart-4: #ECE8E1;
+  --chart-5: #2A3A4D;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #0F1923;
+  --foreground: #ECE8E1;
+  --card: rgba(26, 38, 52, 0.4);
+  --card-foreground: #ECE8E1;
+  --popover: #1A2634;
+  --popover-foreground: #ECE8E1;
+  --primary: #FF4655;
+  --primary-foreground: #FFFFFF;
+  --secondary: #2A3A4D;
+  --secondary-foreground: #ECE8E1;
+  --muted: #2A3A4D;
+  --muted-foreground: #8892A0;
+  --accent: #00D4AA;
+  --accent-foreground: #0F1923;
+  --destructive: #FF4655;
+  --border: rgba(255, 70, 85, 0.15);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #FF4655;
+  --chart-1: #FF4655;
+  --chart-2: #00D4AA;
+  --chart-3: #8892A0;
+  --chart-4: #ECE8E1;
+  --chart-5: #2A3A4D;
 }
 
 @layer base {
@@ -122,5 +119,209 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
   }
+}
+
+/* Tactical Grid Overlay */
+.tactical-grid {
+  position: relative;
+}
+
+.tactical-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 70, 85, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 70, 85, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scanline Effect */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: rgba(26, 38, 52, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 70, 85, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 70, 85, 0.4);
+  box-shadow: 0 0 20px rgba(255, 70, 85, 0.15);
+}
+
+/* Valorant Red Glow Text */
+.glow-red {
+  text-shadow: 0 0 10px rgba(255, 70, 85, 0.5), 0 0 20px rgba(255, 70, 85, 0.3);
+}
+
+/* Teal Glow for positive stats */
+.glow-teal {
+  text-shadow: 0 0 10px rgba(0, 212, 170, 0.5), 0 0 20px rgba(0, 212, 170, 0.3);
+}
+
+/* Tactical Button with diagonal cut */
+.tactical-btn {
+  position: relative;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  background: linear-gradient(135deg, rgba(255, 70, 85, 0.2) 0%, rgba(255, 70, 85, 0.1) 100%);
+  border: 1px solid rgba(255, 70, 85, 0.3);
+  transition: all 0.2s ease;
+}
+
+.tactical-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 70, 85, 0.4) 0%, rgba(255, 70, 85, 0.2) 100%);
+  border-color: rgba(255, 70, 85, 0.6);
+  box-shadow: 0 0 15px rgba(255, 70, 85, 0.3);
+}
+
+.tactical-btn.active {
+  background: linear-gradient(135deg, #FF4655 0%, #cc3844 100%);
+  border-color: #FF4655;
+}
+
+/* Tactical Badge with skewed corners */
+.tactical-badge {
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+}
+
+/* Corner Accents */
+.corner-accent {
+  position: relative;
+}
+
+.corner-accent::before,
+.corner-accent::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 70, 85, 0.5);
+  pointer-events: none;
+}
+
+.corner-accent::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner-accent::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Uppercase Tactical Headings */
+.tactical-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+/* Agent Watermark */
+.agent-watermark {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  font-size: 12rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  opacity: 0.03;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  color: #FF4655;
+}
+
+/* Stat Number Glow */
+.stat-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-value.positive {
+  color: #00D4AA;
+  text-shadow: 0 0 8px rgba(0, 212, 170, 0.4);
+}
+
+.stat-value.negative {
+  color: #FF4655;
+  text-shadow: 0 0 8px rgba(255, 70, 85, 0.4);
+}
+
+.stat-value.neutral {
+  color: #ECE8E1;
+}
+
+/* Scrollbar Styling */
+.tactical-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tactical-scrollbar::-webkit-scrollbar-track {
+  background: rgba(26, 38, 52, 0.5);
+}
+
+.tactical-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 70, 85, 0.4);
+  border-radius: 3px;
+}
+
+.tactical-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 70, 85, 0.6);
+}
+
+/* Hover Border Glow */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  border-color: rgba(255, 70, 85, 0.5);
+  box-shadow: 
+    0 0 20px rgba(255, 70, 85, 0.15),
+    inset 0 0 20px rgba(255, 70, 85, 0.05);
+}
+
+/* Result Colors */
+.result-won {
+  color: #00D4AA;
+  background: rgba(0, 212, 170, 0.15);
+  border-color: rgba(0, 212, 170, 0.4);
+}
+
+.result-lost {
+  color: #FF4655;
+  background: rgba(255, 70, 85, 0.15);
+  border-color: rgba(255, 70, 85, 0.4);
+}
+
+.result-draw {
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.15);
+  border-color: rgba(255, 215, 0, 0.4);
 }

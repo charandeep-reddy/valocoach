@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Match } from "@/types/player";
 import {
   Dialog,
@@ -13,6 +12,82 @@ interface MatchDetailModalProps {
   match: Match | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+}
+
+function SectionHeading({ title }: { title: string }) {
+  return (
+    <h3 className="text-xs font-bold text-valorant-red uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+      <div className="w-2 h-2 bg-valorant-red" />
+      {title}
+    </h3>
+  );
+}
+
+function StatCard({
+  value,
+  label,
+  valueClassName = "text-[#ECE8E1]",
+  compact = false,
+}: {
+  value: React.ReactNode;
+  label: string;
+  valueClassName?: string;
+  compact?: boolean;
+}) {
+  return (
+    <div className={`text-center glass-card rounded-lg ${compact ? "p-3" : "p-4"}`}>
+      <p className={`font-bold tabular-nums ${compact ? "text-2xl" : "text-3xl"} ${valueClassName}`}>
+        {value}
+      </p>
+      <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">{label}</p>
+    </div>
+  );
+}
+
+function ShotBreakdownRow({
+  label,
+  count,
+  pct,
+  barClassName,
+  valueClassName,
+}: {
+  label: string;
+  count: number;
+  pct: string;
+  barClassName: string;
+  valueClassName: string;
+}) {
+  return (
+    <div className="flex items-center justify-between gap-4">
+      <span className="text-sm text-[#ECE8E1] uppercase tracking-wide w-24">{label}</span>
+      <div className="flex-1 h-3 bg-valorant-navy rounded-full overflow-hidden w-full">
+        <div
+          className={`h-full bg-linear-to-r rounded-full ${barClassName}`}
+          style={{ width: `${pct}%` }}
+        />
+      </div>
+      <span className={`text-sm font-bold w-24 text-right tabular-nums ${valueClassName}`}>
+        {count} ({pct}%)
+      </span>
+    </div>
+  );
+}
+
+function DamageReportRow({
+  type,
+  amount,
+  textColor = "",
+}: {
+  type: "dealt" | "recieved" | "delta";
+  amount: number;
+  textColor?: string;
+}) {
+  return (
+    <div className="glass-card p-4 text-center rounded-lg flex flex-col items-center justify-between gap-1">
+      <span className={`text-center text-xl md:text-2xl font-bold tabular-nums ${textColor}`}>{amount}</span>
+      <span className="text-xs text-[#8892A0] uppercase tracking-wide">{type}</span>
+    </div>
+  );
 }
 
 export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModalProps) {
@@ -50,13 +125,58 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
   const damageDiff = match.damage_made - match.damage_received;
   const damageColor = damageDiff >= 0 ? "text-[#00D4AA]" : "text-valorant-red";
 
+  const shotBreakdownContent = [
+    {
+      label: "Head",
+      count: match.headshots,
+      pct: headshotPct,
+      barClassName: "from-valorant-teal to-valorant-teal/70",
+      valueClassName: "text-valorant-teal",
+    },
+    {
+      label: "Body",
+      count: match.bodyshots,
+      pct: bodyshotPct,
+      barClassName: "from-[#8892A0] to-[#8892A0]/70",
+      valueClassName: "text-[#8892A0]",
+    },
+    {
+      label: "Legs",
+      count: match.legshots,
+      pct: legshotPct,
+      barClassName: "from-valorant-red to-valorant-red/70",
+      valueClassName: "text-valorant-red",
+    },
+  ];
+
+  const damageReportContent = [
+    {
+      type: "dealt",
+      amount: match.damage_made,
+      textColor: "text-valorant-teal",
+    },
+    {
+      type: "recieved",
+      amount: match.damage_received,
+      textColor: "text-valorant-red",
+    },
+    {
+      type: "delta",
+      amount: damageDiff,
+      textColor: damageColor,
+    },
+  ];
+
+  const combatStatsContent = [
+    { value: match.ACS, label: "ACS" },
+    { value: match.kd_ratio.toFixed(2), label: "K/D", valueClassName: kdColor },
+    { value: `${match.headshot_percentage.toFixed(0)}%`, label: "HS%" },
+  ];
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-lg bg-valorant-dark border border-valorant-red/30 backdrop-blur-xl">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.2 }}
+        <div
         >
           <DialogHeader className="space-y-3">
             {/* Result Badge + Map & Agent */}
@@ -79,138 +199,59 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
           <div className="space-y-6 mt-6">
             {/* Combat Stats */}
             <div>
-              <h3 className="text-xs font-bold text-valorant-red uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
-                <div className="w-2 h-2 bg-valorant-red" />
-                Combat Stats
-              </h3>
+              <SectionHeading title="Combat Stats" />
               <div className="grid grid-cols-3 gap-3">
-                <motion.div 
-                  className="glass-card p-4 text-center rounded-lg"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <p className="text-3xl font-bold text-[#ECE8E1]">{match.ACS}</p>
-                  <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">ACS</p>
-                </motion.div>
-                <motion.div 
-                  className="glass-card p-4 text-center rounded-lg"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <p className={`text-3xl font-bold ${kdColor}`}>
-                    {match.kd_ratio.toFixed(2)}
-                  </p>
-                  <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">K/D</p>
-                </motion.div>
-                <motion.div 
-                  className="glass-card p-4 text-center rounded-lg"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <p className="text-3xl font-bold text-[#ECE8E1]">
-                    {match.headshot_percentage.toFixed(0)}%
-                  </p>
-                  <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">HS%</p>
-                </motion.div>
+                {combatStatsContent.map((item) => (
+                  <StatCard
+                    key={item.label}
+                    value={item.value}
+                    label={item.label}
+                    valueClassName={item.valueClassName}
+                  />
+                ))}
               </div>
-              <div className="mt-4 text-center glass-card p-3 rounded-lg">
-                <p className="text-2xl font-bold text-[#ECE8E1] tabular-nums">
-                  {match.kills} / {match.deaths} / {match.assists}
-                </p>
-                <p className="text-xs text-[#8892A0] uppercase tracking-widest">Kills / Deaths / Assists</p>
+              <div className="mt-4">
+                <StatCard
+                  value={`${match.kills} / ${match.deaths} / ${match.assists}`}
+                  label="Kills / Deaths / Assists"
+                  compact
+                />
               </div>
             </div>
 
             {/* Shot Breakdown */}
             <div>
-              <h3 className="text-xs font-bold text-valorant-red uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
-                <div className="w-2 h-2 bg-valorant-red" />
-                Shot Breakdown
-              </h3>
+              <SectionHeading title="Shot Breakdown" />
               <div className="space-y-3">
-                {/* Headshots */}
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-sm text-[#ECE8E1] uppercase tracking-wide w-24">Head</span>
-                  <div className="flex-1 h-3 bg-valorant-navy rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${headshotPct}%` }}
-                      transition={{ duration: 0.5, delay: 0.1 }}
-                      className="h-full bg-linear-to-r from-valorant-teal to-valorant-teal/70 rounded-full"
-                    />
-                  </div>
-                  <span className="text-sm font-bold text-valorant-teal w-24 text-right tabular-nums">
-                    {match.headshots} ({headshotPct}%)
-                  </span>
-                </div>
-                {/* Bodyshots */}
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-sm text-[#ECE8E1] uppercase tracking-wide w-24">Body</span>
-                  <div className="flex-1 h-3 bg-valorant-navy rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${bodyshotPct}%` }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                      className="h-full bg-linear-to-r from-[#8892A0] to-[#8892A0]/70 rounded-full"
-                    />
-                  </div>
-                  <span className="text-sm font-bold text-[#8892A0] w-24 text-right tabular-nums">
-                    {match.bodyshots} ({bodyshotPct}%)
-                  </span>
-                </div>
-                {/* Legshots */}
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-sm text-[#ECE8E1] uppercase tracking-wide w-24">Legs</span>
-                  <div className="flex-1 h-3 bg-valorant-navy rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${legshotPct}%` }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                      className="h-full bg-linear-to-r from-valorant-red to-valorant-red/70 rounded-full"
-                    />
-                  </div>
-                  <span className="text-sm font-bold text-valorant-red w-24 text-right tabular-nums">
-                    {match.legshots} ({legshotPct}%)
-                  </span>
-                </div>
+                {shotBreakdownContent.map((item) => (
+                  <ShotBreakdownRow
+                    key={item.label}
+                    label={item.label}
+                    count={item.count}
+                    pct={item.pct}
+                    barClassName={item.barClassName}
+                    valueClassName={item.valueClassName}
+                  />
+                ))}
               </div>
             </div>
 
             {/* Damage Stats */}
             <div>
-              <h3 className="text-xs font-bold text-valorant-red uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
-                <div className="w-2 h-2 bg-valorant-red" />
-                Damage Report
-              </h3>
+              <SectionHeading title="Damage Report" />
               <div className="grid grid-cols-3 gap-3">
-                <motion.div 
-                  className="glass-card p-4 text-center rounded-lg"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <p className="text-2xl font-bold text-valorant-teal tabular-nums">
-                    {match.damage_made.toLocaleString()}
-                  </p>
-                  <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">Dealt</p>
-                </motion.div>
-                <motion.div 
-                  className="glass-card p-4 text-center rounded-lg"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <p className="text-2xl font-bold text-valorant-red tabular-nums">
-                    {match.damage_received.toLocaleString()}
-                  </p>
-                  <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">Received</p>
-                </motion.div>
-                <motion.div 
-                  className="glass-card p-4 text-center rounded-lg"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <p className={`text-2xl font-bold tabular-nums ${damageColor}`}>
-                    {damageDiff >= 0 ? "+" : ""}{damageDiff.toLocaleString()}
-                  </p>
-                  <p className="text-xs text-[#8892A0] uppercase tracking-widest mt-1">Delta</p>
-                </motion.div>
+                {damageReportContent.map((item) => (
+                  <DamageReportRow
+                    key={item.type}
+                    type={item.type as "dealt" | "recieved" | "delta"}
+                    amount={item.amount}
+                    textColor={item.textColor}
+                  />
+                ))}
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </DialogContent>
     </Dialog>
   );

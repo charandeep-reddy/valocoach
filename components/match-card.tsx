@@ -9,22 +9,58 @@ interface MatchCardProps {
   index?: number;
 }
 
-export function MatchCard({ match, onClick, index = 0 }: MatchCardProps) {
-  const resultStyles = {
-    Won: "result-won",
-    Lost: "result-lost",
-    Draw: "result-draw",
-  };
+const resultStyles = {
+  Won: "text-valorant-teal",
+  Lost: "text-valorant-red",
+  Draw: "text-valorant-gray",
+};
 
+function MatchStat({
+  label,
+  value,
+  valueClassName = "text-[#ECE8E1]",
+  className = "",
+}: {
+  label: string;
+  value: React.ReactNode;
+  valueClassName?: string;
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      <p className="text-xs text-[#8892A0] uppercase tracking-widest">{label}</p>
+      <p className={`font-bold ${valueClassName}`}>{value}</p>
+    </div>
+  );
+}
+
+export function MatchCard({ match, onClick }: MatchCardProps) {
   const kdColor = match.kd_ratio >= 1 ? "text-[#00D4AA]" : "text-valorant-red";
-
-  // Parse date
   const dateStr = match.date_and_time.replace(" UTC", "");
-  const date = new Date(dateStr);
-  const formattedDate = date.toLocaleDateString("en-US", {
+  const formattedDate = new Date(dateStr).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
   });
+
+  const stats = [
+    {
+      label: "K / D / A",
+      value: `${match.kills} / ${match.deaths} / ${match.assists}`,
+      valueClassName: "text-[#ECE8E1] tabular-nums",
+    },
+    {
+      label: "K/D",
+      value: match.kd_ratio.toFixed(2),
+      valueClassName: `text-lg ${kdColor}`,
+      className: "w-16",
+    },
+    { label: "ACS", value: match.ACS, className: "w-14" },
+    {
+      label: "HS%",
+      value: `${match.headshot_percentage.toFixed(0)}%`,
+      className: "w-14",
+    },
+  ];
 
   return (
     <motion.div
@@ -34,16 +70,11 @@ export function MatchCard({ match, onClick, index = 0 }: MatchCardProps) {
       onClick={onClick}
       className="glass-card hover-glow rounded-lg p-4 cursor-pointer relative overflow-hidden group"
     >
-      {/* Left accent line */}
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-valorant-red to-valorant-red/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      
       <div className="flex items-center gap-4">
-        {/* Result Badge */}
         <div className={`tactical-badge px-4 py-1.5 font-bold uppercase tracking-wider text-sm ${resultStyles[match.result]}`}>
           {match.result}
         </div>
-
-        {/* Map & Agent */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <p className="font-bold text-[#ECE8E1] truncate uppercase tracking-wide">{match.map}</p>
@@ -54,31 +85,16 @@ export function MatchCard({ match, onClick, index = 0 }: MatchCardProps) {
             {formattedDate} • {match.total_rounds} RDS
           </p>
         </div>
-
-        {/* Stats */}
         <div className="hidden sm:flex items-center gap-6 text-right">
-          <div>
-            <p className="text-xs text-[#8892A0] uppercase tracking-widest">K / D / A</p>
-            <p className="font-bold text-[#ECE8E1] tabular-nums">
-              {match.kills} / {match.deaths} / {match.assists}
-            </p>
-          </div>
-          <div className="w-16">
-            <p className="text-xs text-[#8892A0] uppercase tracking-widest">K/D</p>
-            <p className={`font-bold text-lg ${kdColor}`}>
-              {match.kd_ratio.toFixed(2)}
-            </p>
-          </div>
-          <div className="w-14">
-            <p className="text-xs text-[#8892A0] uppercase tracking-widest">ACS</p>
-            <p className="font-bold text-[#ECE8E1]">{match.ACS}</p>
-          </div>
-          <div className="w-14">
-            <p className="text-xs text-[#8892A0] uppercase tracking-widest">HS%</p>
-            <p className="font-bold text-[#ECE8E1]">
-              {match.headshot_percentage.toFixed(0)}%
-            </p>
-          </div>
+          {stats.map((s) => (
+            <MatchStat
+              key={s.label}
+              label={s.label}
+              value={s.value}
+              valueClassName={s.valueClassName}
+              className={s.className}
+            />
+          ))}
         </div>
       </div>
     </motion.div>

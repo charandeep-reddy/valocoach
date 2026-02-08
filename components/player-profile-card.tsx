@@ -8,12 +8,58 @@ interface PlayerProfileCardProps {
   player: PlayerData;
 }
 
+function RankCard({
+  label,
+  primary,
+  secondary,
+  primaryClassName = "text-[#ECE8E1]",
+}: {
+  label: string;
+  primary: string;
+  secondary?: string;
+  primaryClassName?: string;
+}) {
+  return (
+    <div className="flex-1 flex flex-col items-center justify-center glass-card rounded-lg h-full">
+      <p className="text-xs text-[#8892A0] uppercase tracking-widest">{label}</p>
+      <p className={`text-base sm:text-lg md:text-xl font-bold ${primaryClassName}`}>{primary}</p>
+      {secondary != null && (
+        <p className="text-base sm:text-lg md:text-xl text-valorant-red font-bold">{secondary}</p>
+      )}
+    </div>
+  );
+}
+
+function QuickStats({ label, value, textColor }: { label: string, value: string, textColor: string }) {
+  return (
+    <div className="glass-card px-4 py-2 rounded-lg text-center">
+      <p className="text-xs text-[#8892A0] uppercase tracking-widest">{label}</p>
+      <p className={`text-base sm:text-lg md:text-xl font-bold ${textColor}`}>{value}</p>
+    </div>
+  );
+}
+
+  
+
 export function PlayerProfileCard({ player }: PlayerProfileCardProps) {
   // Extract rank tier and RR from "Immortal 3 330 RR"
   const rankParts = player.current_rank.split(" ");
   rankParts.pop(); // Remove "RR"
   const rankNumber = rankParts.pop(); // "330"
   const rankName = rankParts.join(" "); // "Immortal 3"
+
+  const quickStats = [
+      {
+          label: "Top Agent",
+          value: player.top_agent,
+          textColor: "text-valorant-teal"
+      },
+      {
+        label: "Best Map",
+        value: player.best_map,
+        textColor: "text-valorant-red"
+      }
+  ]
 
   return (
     <div
@@ -57,35 +103,25 @@ export function PlayerProfileCard({ player }: PlayerProfileCardProps) {
           </div>
 
           {/* Rank Info */}
-          <div className="flex items-center gap-4">
-            <div 
-              className="px-3 sm:px-5 py-3 glass-card rounded-lg"
-            >
-              <p className="text-xs text-[#8892A0] uppercase tracking-widest">Current Rank</p>
-              <p className="text-base sm:text-lg md:text-xl font-bold text-[#ECE8E1] tactical-heading">{rankName}</p>
-              <p className="text-base sm:text-lg md:text-xl text-valorant-red font-bold">{rankNumber} RR</p>
-            </div>
-            <div 
-              className="px-3 sm:px-5 py-3 glass-card rounded-lg"
-            >
-              <p className="text-xs text-[#8892A0] uppercase tracking-widest">Peak Rank</p>
-              <p className="text-base sm:text-lg md:text-xl font-bold text-valorant-teal">
-                {player.peak_rank.split(" ")[0]}
-              </p>
-            </div>
+          <div className="flex items-center gap-4 h-24 max-w-xs">
+            <RankCard
+              label="Current Rank"
+              primary={rankName}
+              secondary={`${rankNumber} RR`}
+            />
+            <RankCard
+              label="Peak Rank"
+              primary={player.peak_rank.split(" ")[0]}
+              primaryClassName="text-valorant-teal"
+            />
           </div>
         </div>
 
         {/* Quick Stats */}
         <div className="hidden lg:flex flex-col gap-3 text-right">
-          <div className="glass-card px-4 py-2 rounded-lg">
-            <p className="text-xs text-[#8892A0] uppercase tracking-widest">Top Agent</p>
-            <p className="text-base sm:text-lg md:text-xl font-bold text-valorant-red">{player.top_agent}</p>
-          </div>
-          <div className="glass-card px-4 py-2 rounded-lg">
-            <p className="text-xs text-[#8892A0] uppercase tracking-widest">Best Map</p>
-            <p className="text-base sm:text-lg md:text-xl font-bold text-valorant-teal">{player.best_map}</p>
-          </div>
+          {quickStats.map((stat) => (
+            <QuickStats key={stat.label} label={stat.label} value={stat.value} textColor={stat.textColor} />
+          ))}
         </div>
       </div>
     </div>

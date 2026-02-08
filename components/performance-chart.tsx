@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { MapStats } from "@/lib/data";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 
@@ -16,10 +15,7 @@ export function PerformanceChart({ mapStats }: PerformanceChartProps) {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: 0.1 }}
+    <div
       className="glass-card corner-accent rounded-lg p-6 relative overflow-hidden"
     >
       {/* Scanline effect */}
@@ -80,6 +76,6 @@ export function PerformanceChart({ mapStats }: PerformanceChartProps) {
           </BarChart>
         </ResponsiveContainer>
       </div>
-    </motion.div>
+    </div>
   );
 }

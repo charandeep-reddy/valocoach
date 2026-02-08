@@ -71,7 +71,7 @@ function DamageReportRow({
   amount,
   textColor = "",
 }: {
-  type: "dealt" | "recieved" | "delta";
+  type: "dealt" | "received" | "delta";
   amount: number;
   textColor?: string;
 }) {
@@ -143,7 +143,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
       textColor: "text-valorant-teal",
     },
     {
-      type: "recieved",
+      type: "received",
       amount: match.damage_received,
       textColor: "text-valorant-red",
     },
@@ -230,7 +230,7 @@ export function MatchDetailModal({ match, open, onOpenChange }: MatchDetailModal
                 {damageReportContent.map((item) => (
                   <DamageReportRow
                     key={item.type}
-                    type={item.type as "dealt" | "recieved" | "delta"}
+                    type={item.type as "dealt" | "received" | "delta"}
                     amount={item.amount}
                     textColor={item.textColor}
                   />

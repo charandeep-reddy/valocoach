@@ -165,11 +165,6 @@
   transition: all 0.3s ease;
 }
 
-.glass-card:hover {
-  border-color: rgba(255, 70, 85, 0.4);
-  box-shadow: 0 0 20px rgba(255, 70, 85, 0.15);
-}
-
 /* Tactical Button with diagonal cut */
 .tactical-btn {
   position: relative;
@@ -251,20 +246,7 @@
 /* Stat Number Glow */
 .stat-value {
   font-variant-numeric: tabular-nums;
-}
-
-.stat-value.positive {
-  color: #00D4AA;
-  text-shadow: 0 0 8px rgba(0, 212, 170, 0.4);
-}
-
-.stat-value.negative {
   color: #FF4655;
-  text-shadow: 0 0 8px rgba(255, 70, 85, 0.4);
-}
-
-.stat-value.neutral {
-  color: #ECE8E1;
 }
 
 /* Scrollbar Styling */

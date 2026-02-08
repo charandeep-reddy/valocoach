@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { PlayerData } from "@/types/player";
 import { getMapStats } from "@/lib/data";
 import { PlayerProfileCard } from "@/components/player-profile-card";
@@ -34,14 +33,12 @@ export default function Home() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-valorant-dark tactical-grid">
-        <motion.div 
+        <div 
           className="flex flex-col items-center gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
         >
           <div className="w-12 h-12 border-2 border-valorant-red border-t-transparent rounded-full animate-spin" />
           <p className="text-[#8892A0] uppercase tracking-[0.3em] text-sm">Loading Intel...</p>
-        </motion.div>
+        </div>
       </div>
     );
   }
@@ -67,10 +64,8 @@ export default function Home() {
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-valorant-red/20 bg-valorant-dark/90 backdrop-blur-md">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <motion.div 
+          <div 
             className="flex items-center gap-3"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
           >
             <div className="w-10 h-10 tactical-badge bg-valorant-red/20 flex items-center justify-center border border-valorant-red/40">
               <span className="text-valorant-red font-bold text-xl">V</span>
@@ -79,7 +74,7 @@ export default function Home() {
               <h1 className="text-xl font-bold text-[#ECE8E1] uppercase tracking-[0.2em]">ValoCoach</h1>
               <p className="text-xs text-[#8892A0] uppercase tracking-widest">Tactical Dashboard</p>
             </div>
-          </motion.div>
+          </div>
           {/* <ThemeToggle /> */}
         </div>
       </header>

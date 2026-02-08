@@ -32,11 +32,8 @@ export function MatchHistory({ matches }: MatchHistoryProps) {
   };
 
   return (
-    <motion.div 
+    <div 
       className="space-y-4"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
     >
       {/* Header & Filters */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -108,6 +105,6 @@ export function MatchHistory({ matches }: MatchHistoryProps) {
         open={modalOpen}
         onOpenChange={setModalOpen}
       />
-    </motion.div>
+    </div>
   );
 }

@@ -28,9 +28,8 @@ export function MatchCard({ match, onClick, index = 0 }: MatchCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.1, ease: "easeInOut" }}
+      initial={{ x: 0 }}
+      transition={{ duration: 0.1, ease: "linear" }}
       whileHover={{ x: 4 }}
       onClick={onClick}
       className="glass-card hover-glow rounded-lg p-4 cursor-pointer relative overflow-hidden group"

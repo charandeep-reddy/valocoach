@@ -96,7 +96,7 @@ export function PlayerProfileCard({ player }: PlayerProfileCardProps) {
               <Badge className="tactical-badge bg-valorant-red/20 text-valorant-red border border-valorant-red/40 font-mono uppercase tracking-wide">
                 Level {player.player_account_level}
               </Badge>
-              <Badge className="tactical-badge bg-valorant-teal/20 text-valorant-tealteal border border-valorant-teal/40 text-xs uppercase">
+              <Badge className="tactical-badge bg-valorant-teal/20 text-valorant-teal border border-valorant-teal/40 text-xs uppercase">
                 #{player.leaderboard_placement} Leaderboard
               </Badge>
             </div>

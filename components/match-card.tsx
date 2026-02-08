@@ -30,13 +30,13 @@ export function MatchCard({ match, onClick, index = 0 }: MatchCardProps) {
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.3, delay: index * 0.03 }}
-      whileHover={{ x: 4, scale: 1.01 }}
+      transition={{ duration: 0.1, ease: "easeInOut" }}
+      whileHover={{ x: 4 }}
       onClick={onClick}
       className="glass-card hover-glow rounded-lg p-4 cursor-pointer relative overflow-hidden group"
     >
       {/* Left accent line */}
-      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF4655] to-[#FF4655]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-valorant-red to-valorant-red/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       
       <div className="flex items-center gap-4">
         {/* Result Badge */}
@@ -48,7 +48,7 @@ export function MatchCard({ match, onClick, index = 0 }: MatchCardProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <p className="font-bold text-[#ECE8E1] truncate uppercase tracking-wide">{match.map}</p>
-            <span className="text-[#FF4655]">//</span>
+            <span className="text-valorant-red">//</span>
             <p className="text-[#8892A0] truncate">{match.agent}</p>
           </div>
           <p className="text-xs text-[#8892A0] mt-0.5 uppercase tracking-widest">

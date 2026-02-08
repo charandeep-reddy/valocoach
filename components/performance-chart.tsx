@@ -2,6 +2,7 @@
 
 import { MapStats } from "@/lib/data";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
+import { SectionHeading } from "@/components/section-heading";
 
 interface PerformanceChartProps {
   mapStats: MapStats[];
@@ -21,10 +22,7 @@ export function PerformanceChart({ mapStats }: PerformanceChartProps) {
       {/* Scanline effect */}
       <div className="absolute inset-0 scanlines pointer-events-none opacity-50" />
       
-      <h3 className="text-lg font-bold text-[#ECE8E1] flex items-center gap-3 tactical-heading mb-4 relative z-10">
-        <div className="w-1 h-6 bg-valorant-red" />
-        Performance by Map
-      </h3>
+      <SectionHeading title="Performance by Map" variant="section" />
       
       <div className="h-[300px] w-full relative z-10">
         <ResponsiveContainer width="100%" height="100%">

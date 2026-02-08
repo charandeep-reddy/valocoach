@@ -1,7 +1,7 @@
 "use client";
 
 import { PlayerData } from "@/types/player";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { SectionHeading } from "@/components/section-heading";
 
 interface StatsOverviewProps {
   player: PlayerData;

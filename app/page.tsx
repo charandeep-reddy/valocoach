@@ -88,7 +88,9 @@ export default function Home() {
         {/* Two Column Layout: Chart + Match History */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Performance Chart */}
+          <section className="lg:col-span-1">
             <PerformanceChart mapStats={mapStats} />
+          </section>
 
           {/* Match History */}
           <section className="lg:col-span-2">

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Match, FilterType } from "@/types/player";
 import { filterMatches, searchMatches } from "@/lib/data";
 import { Input } from "@/components/ui/input";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { SectionHeading } from "@/components/section-heading";
 import { MatchCard } from "@/components/match-card";
 import { MatchDetailModal } from "@/components/match-detail-modal";
 

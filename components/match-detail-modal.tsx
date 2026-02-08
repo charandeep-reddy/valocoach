@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { SectionHeading } from "@/components/section-heading";
 import { RESULT_BADGE_CLASSES } from "@/lib/result-styles";
 
 interface MatchDetailModalProps {
